@@ -1,0 +1,20 @@
+<section class="registration">
+  <form [formGroup]="form" (submit)="onSubmit()">
+    <h1 class="registration__title">Регистрация</h1>
+    <ng-container *ngFor="let field of inputFields; let i = index">
+      <div class="registration__input-wrapper">
+        <input
+        [placeholder]="field.fieldPlaceholder"
+        [type]="field.fieldType"
+        [formControlName]="field.fieldControl"
+        [ngClass]="{
+          invalid: form.controls[field.fieldControl].touched && form.controls[field.fieldControl].invalid,
+          mismatch: form.errors?.['matchPassword'] && (field.fieldControl === 'password' || field.fieldControl === 'repeatPassword')
+        }"
+        >
+      </div>
+    </ng-container>
+    <small class="registration__error-message" *ngIf="form.errors?.['matchPassword']">Введенный пароль не совпадает</small>
+    <button class="registration__button" type="submit" [disabled]="form.invalid">Зарегистрироваться</button>
+  </form>
+</section>

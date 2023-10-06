@@ -1,0 +1,24 @@
+<section class="auth">
+  <form [formGroup]="form" (submit)="onSubmit()">
+    <h1 class="auth__title">Авторизация</h1>
+    <div class="auth__input-wrapper">
+      <input
+      placeholder="Почта"
+      type="email"
+      formControlName="email"
+      [class.invalid]="form.controls['email'].touched && form.controls['email'].invalid"
+      >
+    </div>
+    <small class="auth__error-message" *ngIf="form.controls['email'].touched && form.controls['email'].invalid">Данное поле обязательно для заполнения</small>
+    <div class="auth__input-wrapper">
+      <input
+      placeholder="Пароль"
+      type="password"
+      formControlName="password"
+      [class.invalid]="form.controls['password'].touched && form.controls['password'].invalid"
+      >
+    </div>
+    <small class="auth__error-message" *ngIf="form.controls['password'].touched && form.controls['password'].invalid">Данное поле обязательно для заполнения</small>
+    <button class="auth__button" type="submit" [disabled]="form.invalid">Зарегистрироваться</button>
+  </form>
+</section>
