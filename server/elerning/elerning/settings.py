@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'auth.apps.AuthConfig',
+    'user.apps.UserConfig',
 
     'rest_framework',
     'drf_yasg',
@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'elerning.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'elerning',
+        'NAME': 'education',
         'USER': 'postgres',
         'PASSWORD': '',
         'HOST': '127.0.0.1',
@@ -132,3 +132,5 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
+
+AUTH_USER_MODEL = "user.CustomUser"
