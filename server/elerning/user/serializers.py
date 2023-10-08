@@ -17,6 +17,7 @@ class UserSerializer(serializers.ModelSerializer):
         repeat_password = validated_data.pop('repeatPassword')
         if validated_data['password'] != repeat_password:
             raise serializers.ValidationError("Passwords do not match")
+
         user = CustomUser(**validated_data)
         user.set_password(validated_data['password'])
         user.save()
