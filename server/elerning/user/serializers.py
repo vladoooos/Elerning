@@ -1,31 +1,18 @@
 from django.contrib.auth import get_user_model
+from djoser.serializers import UserCreateSerializer as DjoserUserCreateSerializer
 from rest_framework import serializers
-from rest_framework.validators import UniqueValidator
-
-from .models import CustomUser
 
 User = get_user_model()
 
 
-class UserSerializer(serializers.ModelSerializer):
-    repeatPassword = serializers.CharField(write_only=True)
-    email = serializers.EmailField(
-        validators=[UniqueValidator(queryset=User.objects.all(), message="Пользователь с таким email уже существует.")]
-    )
+class CustomUserCreateSerializer(DjoserUserCreateSerializer):
+    repeat_password = serializers.CharField(write_only=True, required=True)
 
-    class Meta:
-        model = CustomUser
-        fields = ('id', 'name', 'surname', 'email', 'password', 'repeatPassword')
-        extra_kwargs = {
-            'password': {'write_only': True},
-        }
+    class Meta(DjoserUserCreateSerializer.Meta):
+        fields = DjoserUserCreateSerializer.Meta.fields + ('repeat_password',)
 
-    def create(self, validated_data):
-        repeat_password = validated_data.pop('repeatPassword')
-        if validated_data['password'] != repeat_password:
+    def validate(self, attrs):
+        repeat_password = attrs.pop('repeat_password')
+        if attrs['password'] != repeat_password:
             raise serializers.ValidationError("Пароли не совпадают")
-
-        user = CustomUser(**validated_data)
-        user.set_password(validated_data['password'])
-        user.save()
-        return user
+        return attrs

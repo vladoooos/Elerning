@@ -43,9 +43,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'rest_framework.authtoken',
     'rest_framework',
-    'drf_yasg',
     'corsheaders',
+    'drf_yasg',
+    'djoser',
 
     'user.apps.UserConfig',
 ]
@@ -139,7 +141,18 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
-    ]
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+}
+
+# Djoser
+
+DJOSER = {
+    'SERIALIZERS': {
+        'user_create': 'user.serializers.CustomUserCreateSerializer',
+    },
 }
 
 # corsheaders
@@ -151,9 +164,6 @@ CORS_ALLOWED_ORIGINS = [
 # User
 
 AUTH_USER_MODEL = "user.CustomUser"
-
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
 
 # Static
 
