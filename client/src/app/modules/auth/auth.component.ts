@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -7,11 +8,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit {
-  form: FormGroup
+  form: FormGroup;
+  emailValue: string = '';
+  passwordValue: string = '';
+  errorMessageResponse: string;
 
-  constructor(private _formBuilder: FormBuilder) {
-
-  }
+  constructor(
+    private _formBuilder: FormBuilder,
+    private _authService: AuthService
+    ) { }
 
   ngOnInit(): void {
     this._createForm();
@@ -19,6 +24,22 @@ export class AuthComponent implements OnInit {
 
   onSubmit() {
     this.form.reset();
+
+    const dataRequest = {
+      email: this.emailValue,
+      password: this.passwordValue
+    }
+    console.log(dataRequest)
+
+    this._authService.auth(dataRequest).subscribe({
+      next: res => {
+        console.log(res);
+      },
+      error: err => {
+        console.log(err);
+        this.errorMessageResponse = err.err.email;
+      }
+    })
   }
 
   private _createForm() {

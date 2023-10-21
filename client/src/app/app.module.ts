@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AuthComponent } from './modules/auth/auth.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { RegistrationComponent } from './modules/registration/registration.component'
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { RegistrationComponent } from './modules/registration/registration.compo
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

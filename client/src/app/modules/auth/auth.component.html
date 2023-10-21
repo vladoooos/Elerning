@@ -1,3 +1,4 @@
+<p *ngIf="errorMessageResponse" class="error">{{errorMessageResponse}}</p>
 <section class="auth">
   <form [formGroup]="form" (submit)="onSubmit()">
     <h1 class="auth__title">Авторизация</h1>
@@ -6,6 +7,7 @@
       placeholder="Почта"
       type="email"
       formControlName="email"
+      [(ngModel)]="emailValue"
       [class.invalid]="form.controls['email'].touched && form.controls['email'].invalid"
       >
     </div>
@@ -15,6 +17,7 @@
       placeholder="Пароль"
       type="password"
       formControlName="password"
+      [(ngModel)]="passwordValue"
       [class.invalid]="form.controls['password'].touched && form.controls['password'].invalid"
       >
     </div>

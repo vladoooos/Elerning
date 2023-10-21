@@ -1,3 +1,4 @@
+<p *ngIf="errorMessageResponse" class="error">{{errorMessageResponse}}</p>
 <section class="registration">
   <form [formGroup]="form" (submit)="onSubmit()">
     <h1 class="registration__title">Регистрация</h1>
@@ -7,6 +8,7 @@
         [placeholder]="field.fieldPlaceholder"
         [type]="field.fieldType"
         [formControlName]="field.fieldControl"
+        [(ngModel)]="field.filedValue"
         [ngClass]="{
           invalid: form.controls[field.fieldControl].touched && form.controls[field.fieldControl].invalid,
           mismatch: form.errors?.['matchPassword'] && (field.fieldControl === 'password' || field.fieldControl === 'repeatPassword')
