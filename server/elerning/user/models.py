@@ -5,7 +5,7 @@ from django.db import models
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         if not email:
-            raise ValueError('The Email field must be set')
+            raise ValueError('Поле Email должно быть установлено')
 
         email = self.normalize_email(email)
         user = self.model(email=email, **extra_fields)
