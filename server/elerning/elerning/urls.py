@@ -8,7 +8,10 @@ from .yasg import urlpatterns as doc_url
 urlpatterns = [
     path('admin/', admin.site.urls),
 
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+
     path('api/v1/', include('user.urls')),
+    path('api/v1/', include('courses.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += doc_url

@@ -9,7 +9,9 @@ User = get_user_model()
 class CustomUserCreateSerializer(DjoserUserCreateSerializer):
     repeat_password = serializers.CharField(write_only=True, required=True)
     email = serializers.EmailField(
-        validators=[UniqueValidator(queryset=User.objects.all(), message='Пользователь с таким email уже существует.')]
+        validators=[
+            UniqueValidator(queryset=User.objects.all(), message='Пользователь с таким email уже существует.')
+        ]
     )
 
     class Meta(DjoserUserCreateSerializer.Meta):
