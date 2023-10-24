@@ -1,9 +1,16 @@
 from django_filters import rest_framework
 from rest_framework import generics, permissions
 from rest_framework import filters
+from rest_framework.pagination import PageNumberPagination
 
 from .models import Block, Course
 from .serializers import BlockSerializers, CourseSerializers
+
+
+class CourseListViewPagination(PageNumberPagination):
+    page_size = 1
+    page_size_query_param = 'page_size'
+    max_page_size = 10000
 
 
 class BlockListView(generics.ListAPIView):
@@ -21,3 +28,4 @@ class CourseListView(generics.ListAPIView):
     filterset_fields = ['category']
     search_fields = ['title']
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]  # изменить на IsAuthenticated
+    pagination_class = CourseListViewPagination
