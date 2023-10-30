@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8027781d-e435-4de4-8af0-2acf0183ccd9" name="Changes" comment="pagination">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/courses/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/courses/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/courses/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/courses/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/courses/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/courses/views.py" afterDir="false" />
+    <list default="true" id="8027781d-e435-4de4-8af0-2acf0183ccd9" name="Changes" comment="product detailing">
+      <change beforePath="$PROJECT_DIR$/.gitigonre" beforeDir="false" afterPath="$PROJECT_DIR$/.gitigonre" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +156,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698165389160</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="product detailing">
+      <created>1698645506239</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1698645506239</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -175,6 +179,7 @@
     <MESSAGE value="error text changes with the same email" />
     <MESSAGE value="course creation" />
     <MESSAGE value="pagination" />
-    <option name="LAST_COMMIT_MESSAGE" value="pagination" />
+    <MESSAGE value="product detailing" />
+    <option name="LAST_COMMIT_MESSAGE" value="product detailing" />
   </component>
 </project>
