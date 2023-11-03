@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8027781d-e435-4de4-8af0-2acf0183ccd9" name="Changes" comment="course creation">
-      <change beforePath="$PROJECT_DIR$/courses/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/courses/views.py" afterDir="false" />
+    <list default="true" id="8027781d-e435-4de4-8af0-2acf0183ccd9" name="Changes" comment="code refactoring">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/courses/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/courses/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/courses/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/courses/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/courses/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/courses/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/elerning/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/elerning/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elerning/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/elerning/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698164753350</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="code refactoring">
+      <created>1698919299819</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1698919299819</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -158,6 +169,7 @@
     <MESSAGE value="server configuration registration and authorization" />
     <MESSAGE value="error text changes with the same email" />
     <MESSAGE value="course creation" />
-    <option name="LAST_COMMIT_MESSAGE" value="course creation" />
+    <MESSAGE value="code refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="code refactoring" />
   </component>
 </project>

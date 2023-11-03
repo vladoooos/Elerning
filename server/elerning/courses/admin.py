@@ -3,7 +3,7 @@ from django import forms
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 
-from .models import Block, Course
+from .models import Block, Course, Question, Answer
 
 
 class CourseAdminForm(forms.ModelForm):
@@ -34,3 +34,13 @@ class CourseAdmin(admin.ModelAdmin):
     search_fields = ('title', 'category')
     save_as = True
     form = CourseAdminForm
+
+
+@admin.register(Question)
+class QuestionAdmin(admin.ModelAdmin):
+    list_display = ('course', 'text')
+
+
+@admin.register(Answer)
+class AnswerAdmin(admin.ModelAdmin):
+    list_display = ('question', 'text', 'is_correct')

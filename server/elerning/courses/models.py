@@ -44,3 +44,28 @@ class Course(models.Model):
     class Meta:
         verbose_name = 'Тема'
         verbose_name_plural = 'Темы'
+
+
+class Question(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    text = models.TextField(verbose_name='Текст вопроса')
+
+    def __str__(self):
+        return self.text
+
+    class Meta:
+        verbose_name = 'Вопрос'
+        verbose_name_plural = 'Вопросы'
+
+
+class Answer(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    text = models.TextField(verbose_name='Текст ответа')
+    is_correct = models.BooleanField(default=False, verbose_name='Правильный ответ')
+
+    def __str__(self):
+        return self.text
+
+    class Meta:
+        verbose_name = 'Ответ'
+        verbose_name_plural = 'Ответы'

@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'rest_framework',
     'django_filters',
+    'debug_toolbar',
     'corsheaders',
     'ckeditor',
     'drf_yasg',
@@ -66,6 +67,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'corsheaders.middleware.CorsMiddleware',
 ]
 
@@ -158,7 +160,6 @@ REST_FRAMEWORK = {
 
     'DEFAULT_PAGINATION_CLASS':
         'rest_framework.pagination.LimitOffsetPagination',
-    # 'PAGE_SIZE': 10
 }
 
 # Djoser
@@ -263,3 +264,9 @@ CKEDITOR_CONFIGS = {
         ]),
     }
 }
+
+# Django debug toolbar
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
