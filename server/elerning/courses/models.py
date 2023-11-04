@@ -3,12 +3,13 @@ import os
 from django.core.exceptions import ValidationError
 from django.db import models
 
+VALID_VIDEO_EXTENSIONS = ['.mp4', '.avi', '.mkv', '.mov']
+
 
 def validate_video_file_extension(value):
     ext = os.path.splitext(value.name)[1]
-    valid_extensions = ['.mp4', '.avi', '.mkv', '.mov']
 
-    if not ext.lower() in valid_extensions:
+    if not ext.lower() in VALID_VIDEO_EXTENSIONS:
         raise ValidationError(
             'Недопустимое расширение файла. Пожалуйста, загрузите видеофайл с расширением .mp4, .avi, .mkv или .mov.'
         )
@@ -37,6 +38,7 @@ class Course(models.Model):
         null=True,
     )
     category = models.ForeignKey(Block, on_delete=models.CASCADE, verbose_name='Категория')
+    order = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return self.title

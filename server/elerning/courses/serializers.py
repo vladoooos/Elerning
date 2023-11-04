@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Block, Course, Answer, Question
+from .models import Answer, Block, Course, Question
 
 
 class BlockSerializers(serializers.ModelSerializer):
@@ -13,13 +13,13 @@ class CourseSerializers(serializers.ModelSerializer):
     category = BlockSerializers(read_only=True)
     description = serializers.SerializerMethodField()
 
-    class Meta:
-        model = Course
-        fields = ['id', 'title', 'description', 'video', 'category']
-
     def get_description(self, obj):
         max_length = 100
         return obj.description[:max_length]
+
+    class Meta:
+        model = Course
+        fields = ['id', 'title', 'description', 'video', 'category']
 
 
 class AnswerSerializer(serializers.ModelSerializer):

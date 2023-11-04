@@ -3,7 +3,7 @@ from django import forms
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 
-from .models import Block, Course, Question, Answer
+from .models import Answer, Block, Course, Question
 
 
 class CourseAdminForm(forms.ModelForm):
