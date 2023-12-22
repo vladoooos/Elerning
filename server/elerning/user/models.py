@@ -1,8 +1,7 @@
 from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager,
                                         PermissionsMixin)
 from django.db import models
-
-from courses.models import Course
+from django.utils import timezone
 
 
 class CustomUserManager(BaseUserManager):
@@ -29,6 +28,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
+    registration_date = models.DateTimeField(default=timezone.now)
 
     objects = CustomUserManager()
 
@@ -38,11 +38,13 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return f'{self.name} {self.surname}'
 
+    def registration_month(self):
+        return self.registration_date.strftime('%B')
 
-class UserCourseProgress(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    completed = models.BooleanField(default=False)
-
-    def __str__(self):
-        return f"{self.user} - {self.course}"
+# class UserCourseProgress(models.Model):
+#     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+#     course = models.ForeignKey(Course, on_delete=models.CASCADE)
+#     completed = models.BooleanField(default=False)
+#
+#     def __str__(self):
+#         return f"{self.user} - {self.course}"
