@@ -39,14 +39,14 @@ export class RegistrationComponent implements OnInit {
     },
     {
       fieldType: 'password',
-      fieldControl: 'repeatPassword',
+      fieldControl: 'repeat_password',
       fieldPlaceholder: 'Повторите пароль',
       filedValue: ''
     }
   ];
   form: FormGroup;
   passwordControl: string;
-  repeatPassword: string;
+  repeatPasswordControl: string;
   errorMessageResponse: string;
 
   constructor(
@@ -60,11 +60,11 @@ export class RegistrationComponent implements OnInit {
   }
 
   onSubmit() {
-    const [name, surname, email, password, repeatPassword] = this.inputFields.map(filed => filed.filedValue)
+    const [name, surname, email, password, repeat_password] = this.inputFields.map(filed => filed.filedValue)
     if (this.form.valid) {
       this.passwordControl = this.form.get('password').value;
-      this.repeatPassword = this.form.get('repeatPassword').value;
-      if (this.passwordControl !== this.repeatPassword) {
+      this.repeatPasswordControl = this.form.get('repeat_password').value;
+      if (this.passwordControl !== this.repeatPasswordControl) {
         this.form.setErrors({ matchPassword: true });
       } else {
         this.form.reset();
@@ -75,7 +75,7 @@ export class RegistrationComponent implements OnInit {
       surname,
       email,
       password,
-      repeatPassword,
+      repeat_password
     }
     this._auth.registration(dataRequest).subscribe({
       next: (res) => {
@@ -86,7 +86,7 @@ export class RegistrationComponent implements OnInit {
         console.log(error)
         this.errorMessageResponse = error.error.email;
       }
-    })
+    });
   }
 
   private _createForm() {
@@ -95,7 +95,7 @@ export class RegistrationComponent implements OnInit {
       surname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      repeatPassword: ['', Validators.required],
+      repeat_password: ['', Validators.required],
     })
   }
 }

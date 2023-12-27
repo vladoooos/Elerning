@@ -3,7 +3,7 @@ export interface IRegistration {
   surname: string,
   email: string,
   password: string,
-  repeatPassword: string
+  repeat_password: string
 }
 
 export interface IRegResponse {
@@ -21,4 +21,5 @@ export interface IAuthRequest {
 }
 
 export interface IAuthResponse {
+  auth_token: string,
 }

@@ -14,10 +14,10 @@ export class AuthService {
   ) { }
 
   registration(regData: IRegistration): Observable<IRegResponse> {
-    return this._http.post<IRegResponse>(`${env.apiUrl}/${env.api.register}/`, regData)
+    return this._http.post<IRegResponse>(`${env.apiUrl}/${env.api.auth}/${env.api.users}/`, regData)
   }
 
   auth(authData : IAuthRequest): Observable<IAuthResponse> {
-    return this._http.post<IAuthResponse>(`${env.apiUrl}/${env.api.auth}/`, authData)
+    return this._http.post<IAuthResponse>(`${env.apiUrl}/${env.api.auth}/${env.api.token}/${env.api.login}/`, authData)
   }
 }

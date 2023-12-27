@@ -1,0 +1,54 @@
+.container {
+  margin: 0 auto;
+  max-width: 1393px;
+  padding: 0 20px;
+}
+
+.course {
+  padding: 100px 0;
+
+  h3 {
+    color: #fff;
+    font-size: 48px;
+  }
+
+  &_description {
+    color: #fff;
+    font-size: 20px;
+    margin: 40px 0;
+    font-weight: 500;
+    max-width: 1000px;
+  }
+
+  &_theme-wrappers {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &_theme-wrapper {
+    padding: 20px;
+    border-radius: 107.143px;
+    background: rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 4px 19px 0px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+
+    &--complete {
+      background: #239763;
+
+      &:hover {
+        background: #1ad07e !important;
+      }
+    }
+
+    &:hover {
+      background-color: rgb(0 0 0 / 55%);
+      transform: translate(20px, 10px);
+    }
+
+    p {
+      color: #fff;
+    }
+  }
+}

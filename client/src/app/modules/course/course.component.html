@@ -1,0 +1,19 @@
+<div class="course">
+  <div class="container">
+    <h3 class="course_title">{{ coursePage?.title }}</h3>
+    <p class="course_description">
+      {{ coursePage?.description }}
+    </p>
+    <div class="course_theme-wrappers">
+      <div
+        class="course_theme-wrapper"
+        *ngFor="let course of courses" [routerLink]="'/theme/' + course?.id"
+        [class.course_theme-wrapper--complete]="course.is_passed"
+      >
+        <p>
+          {{ course?.title }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

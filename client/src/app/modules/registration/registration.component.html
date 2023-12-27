@@ -11,12 +11,13 @@
         [(ngModel)]="field.filedValue"
         [ngClass]="{
           invalid: form.controls[field.fieldControl].touched && form.controls[field.fieldControl].invalid,
-          mismatch: form.errors?.['matchPassword'] && (field.fieldControl === 'password' || field.fieldControl === 'repeatPassword')
+          mismatch: form.errors?.['matchPassword'] && (field.fieldControl === 'password' || field.fieldControl === 'repeat_password')
         }"
         >
       </div>
     </ng-container>
     <small class="registration__error-message" *ngIf="form.errors?.['matchPassword']">Введенный пароль не совпадает</small>
+    <p class="registration__extra-text">Вы уже авторизованы? Тогда пройдите <span routerLink="/auth">авторизацию</span></p>
     <button class="registration__button" type="submit" [disabled]="form.invalid">Зарегистрироваться</button>
   </form>
 </section>
