@@ -13,19 +13,31 @@
   height: 100vh;
   justify-content: center;
   align-items: center;
+  padding: 0 12px;
+
+  &__extra-text {
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 20px;
+
+    span {
+      cursor: pointer;
+      color: #3e3eda;
+    }
+  }
+
   form {
     max-width: 400px;
     width: 100%;
-    height: 670px;
     border-radius: 30px;
     background: rgba(0, 0, 0, 0.15);
-    padding: 0 47.89px;
+    padding: 50px 30px;
   }
   &__title {
     color: #FFF;
     text-align: center;
     font-size: 38px;
-    padding: 70px 0 35px;
+    margin-bottom: 20px;
   }
   &__input-wrapper {
     padding-bottom: 19px;

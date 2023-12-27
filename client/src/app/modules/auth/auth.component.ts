@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { AuthService } from 'src/app/core/services/auth.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-auth',
@@ -9,13 +10,14 @@ import { AuthService } from 'src/app/core/services/auth.service';
 })
 export class AuthComponent implements OnInit {
   form: FormGroup;
-  emailValue: string = '';
-  passwordValue: string = '';
+  emailValue: string;
+  passwordValue: string;
   errorMessageResponse: string;
 
   constructor(
     private _formBuilder: FormBuilder,
-    private _authService: AuthService
+    private _authService: AuthService,
+    private _router: Router
     ) { }
 
   ngOnInit(): void {
@@ -23,8 +25,6 @@ export class AuthComponent implements OnInit {
   }
 
   onSubmit() {
-    this.form.reset();
-
     const dataRequest = {
       email: this.emailValue,
       password: this.passwordValue
@@ -34,6 +34,9 @@ export class AuthComponent implements OnInit {
     this._authService.auth(dataRequest).subscribe({
       next: res => {
         console.log(res);
+        localStorage.setItem('token', res.auth_token);
+        this._router.navigate(['']);
+        this.form.reset();
       },
       error: err => {
         console.log(err);

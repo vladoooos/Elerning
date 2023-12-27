@@ -22,6 +22,7 @@
       >
     </div>
     <small class="auth__error-message" *ngIf="form.controls['password'].touched && form.controls['password'].invalid">Данное поле обязательно для заполнения</small>
-    <button class="auth__button" type="submit" [disabled]="form.invalid">Зарегистрироваться</button>
+    <p class="auth__extra-text">Вы не зарегистрировались? Тогда нужно <span routerLink="/registration">зарегистрироваться</span></p>
+    <button class="auth__button" type="submit" [disabled]="form.invalid">Авторизоваться</button>
   </form>
 </section>

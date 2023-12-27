@@ -1,0 +1,241 @@
+.container {
+  margin: 0 auto;
+  max-width: 1393px;
+  padding: 0 20px;
+}
+
+.theme {
+  padding: 100px 0;
+
+  &_block-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 50px 0;
+  }
+
+  &_block {
+    flex: 1;
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    &--info {
+      flex: 0.5;
+
+      h3 {
+        font-size: 34px !important;
+        line-height: 86%;
+        margin-bottom: 20px;
+      }
+
+      padding: 40px;
+      border-radius: 30px;
+      background: rgba(0, 0, 0, 0.15);
+
+      ul {
+        font-size: 20px;
+        color: #fff;
+
+        li {
+          color: #fff;
+          cursor: pointer;
+          margin-left: 18px;
+          transition: color 0.2s ease-in-out;
+
+          &:hover {
+            color: #0a4fdc;
+          }
+        }
+      }
+    }
+
+    h3 {
+      color: #fff;
+      font-size: 48px;
+    }
+
+    p {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 500;
+    }
+  }
+
+  &_buttons-change {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  &_button-change {
+    cursor: pointer;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
+    transition: all 0.2s ease-in-out;
+
+    &--active {
+      background-color: rgb(0 0 0 / 55%);
+    }
+
+    &--complete {
+      background: #239763;
+      pointer-events: none;
+    }
+
+    &:hover {
+      background-color: rgb(0 0 0 / 55%);
+    }
+
+    p {
+      font-weight: 600;
+      font-size: 36px;
+      color: #fff;
+    }
+  }
+
+  &_theme {
+    &--wrapper {
+      margin-top: 40px;
+      padding: 30px;
+      background: rgba(0, 0, 0, 0.15);
+      border-radius: 20px;
+
+      span {
+        color: #fff;
+      }
+    }
+
+    &--video {
+      video {
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        cursor: pointer;
+      }
+    }
+
+    &--question {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      section {
+        display: flex;
+        flex-direction: column;
+        font-family: Arial, sans-serif;
+        span {
+          margin-bottom: 10px;
+          font-weight: bold;
+        }
+        div {
+          display: flex;
+          align-items: center;
+
+          label {
+            color: #fff;
+            transition: all 0.4s ease-in-out;
+
+            &:hover {
+              color: #223fa7;
+            }
+
+            &:before:hover {
+              color: #223fa7;
+            }
+          }
+
+          .correct-answer {
+            color: #239763;
+            transition: all 0.3s ease;
+
+            &:before {
+              transition: all 0.3s ease;
+              border-color: #239763 !important;
+              background: #239763 !important;
+            }
+          }
+
+          .wrong-answer {
+            color: #d5091c;
+            transition: all 0.3s ease;
+
+            &:before {
+              transition: all 0.3s ease;
+              border-color: #d5091c !important;
+              background: #d5091c !important;
+            }
+          }
+
+          input[type="radio"] {
+            display: none;
+            + label {
+              margin-left: 8px;
+              cursor: pointer;
+              &:before {
+                content: "";
+                display: inline-block;
+                width: 18px;
+                height: 18px;
+                border: 2px solid #fff;
+                border-radius: 50%;
+                margin-right: 6px;
+                vertical-align: middle;
+                transition: background-color 0.3s ease;
+              }
+            }
+            &:checked + label:before {
+              background-color: #223fa7 !important; // Стиль для выбранной радиокнопки
+              border-color: #223fa7 !important;
+            }
+          }
+        }
+      }
+
+      button {
+        all: unset;
+        cursor: pointer;
+        background: #7a7575;
+        max-width: 300px;
+        padding: 20px;
+        text-align: center;
+        border-radius: 20px;
+        color: #fff;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+          background: #1d52d5;
+        }
+
+        &:disabled {
+          pointer-events: none;
+          background: #1d52d5;
+        }
+      }
+    }
+  }
+}
+
+.alert {
+  position: fixed;
+  top: 10px;
+  right: -1000px;
+  background: #fff;
+  border: 2px solid #239763;
+  padding: 20px 30px;
+  border-radius: 20px;
+  width: 387px;
+  transition: right .3s ease-in-out;
+
+  &--show {
+    right: 10px;
+  }
+
+  span {
+    color: #239763;
+    font-size: 15px;
+  }
+}

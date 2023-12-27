@@ -1,0 +1,67 @@
+<div class="theme">
+  <div class="container">
+    <div class="theme_block-wrapper">
+      <div class="theme_block">
+        <h3 class="theme_title">{{ themes.title }}</h3>
+        <p class="theme_description">
+          {{ themes.short_description }}
+        </p>
+      </div>
+      <div class="theme_block theme_block--info">
+        <h3 class="theme_title">Информация о теме</h3>
+        <div class="theme_block-info">
+          <p class="theme_description">Время на изучение: {{ themes.time_course }} минут</p>
+          <p>Имеется видео в данной теме</p>
+          <p>Имеется тест в данной теме</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="theme_buttons-change">
+      <div class="theme_button-change" [class.theme_button-change--active]="isThemeVisible" (click)="changeBlock('Тема')">
+        <p>Тема</p>
+      </div>
+      <div class="theme_button-change" [class.theme_button-change--active]="isVideoVisible" (click)="changeBlock('Видео')">
+        <p>Видео</p>
+      </div>
+      <div class="theme_button-change" [class.theme_button-change--complete]="themes.is_passed" [class.theme_button-change--active]="isQuestionVisible" (click)="changeBlock('Тест')">
+        <p>Тест</p>
+      </div>
+    </div>
+
+    <div class="theme_theme--wrapper theme_theme--info" *ngIf="isThemeVisible">
+      <span [innerHTML]="themeDescription"></span>
+    </div>
+
+    <div class="theme_theme--wrapper theme_theme--video" *ngIf="isVideoVisible">
+      <video [src]="themes.video" controls muted></video>
+    </div>
+
+    <div class="theme_theme--wrapper theme_theme--question" *ngIf="isQuestionVisible">
+      <section *ngFor="let question of themes.questions; let idx = index">
+        <span>{{ idx + 1 }}. {{ question.text }}</span>
+        <div *ngFor="let answer of question.answers">
+          <input
+            type="radio"
+            [id]="'option' + answer.id"
+            [name]="'question' + question.id"
+            [value]="answer.id"
+            [(ngModel)]="selectedAnswers[question.id]"
+          />
+          <label [for]="'option' + answer.id" [ngClass]="{ 'correct-answer': answer.is_correct && isAlertVisible, 'wrong-answer': !answer.is_correct && isAlertVisible }">
+            {{ answer.text }}
+          </label>
+        </div>
+      </section>
+      <button (click)="submit()" [disabled]="themes.is_passed">Отправить результаты</button>
+    </div>
+  </div>
+</div>
+
+<div class="alert" [class.alert--show]="isAlertVisible">
+  <span>
+    Ваши результаты теста отправлены!
+    <p>{{ getCorrectAnswersText(correctAnswers, score) }}</p>
+    <p>Ваша отметка: {{ score }}</p>
+  </span>
+</div>
