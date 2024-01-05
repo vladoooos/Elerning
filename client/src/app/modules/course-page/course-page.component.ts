@@ -11,6 +11,7 @@ import {Router} from "@angular/router";
 export class CoursePageComponent implements OnInit{
   coursePages: ICoursePage[] = [];
   token: string =  localStorage.getItem('token')
+  name: string = localStorage.getItem('name');
 
   constructor(
     private _courseService: CourseService,
@@ -19,7 +20,7 @@ export class CoursePageComponent implements OnInit{
 
   ngOnInit(): void {
     this.getCourse();
-    if (!this.token) {
+    if (!this.token && !this.name) {
       this._router.navigate(['/auth']);
     }
   }
